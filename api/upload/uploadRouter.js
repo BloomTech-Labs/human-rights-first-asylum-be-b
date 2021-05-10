@@ -49,7 +49,6 @@ router.get('/', (req, res) => {
 
 router.post('/', authRequired, (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
-    console.log(req);
     return res.status(400).send('No files were uploaded.');
   }
 
