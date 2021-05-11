@@ -6,6 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const router = express.Router();
+const Upload = require('./uploadModel');
 require('dotenv').config();
 const authRequired = require('../middleware/authRequired');
 
@@ -60,12 +61,19 @@ router.post('/', authRequired, (req, res) => {
     if (err) return res.status(500).send(err);
     uploadFile(UUID)
       .then((s3return) => {
+        const caseRecord = {
+          case_id: UUID,
+          case_url: s3return.Location,
+          user_id: req.profile.id,
+          status: 'processing',
+        };
+        console.log(req.profile)
+        Upload.add(caseRecord);
         axios
           .post(`${process.env.DS_API_URL}${UUID}`, { name: UUID })
           .then((scrape) => {
             const result = scrape.data.body;
             // Any newCase value that doesn't reference the result should be considered a work in progress of the scraper and will need to be updated as the scraper grows
-            console.log(result);
             const newCase = {
               case_id: UUID,
               case_url: s3return.Location,
