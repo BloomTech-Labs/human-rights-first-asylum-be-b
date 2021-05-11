@@ -49,7 +49,6 @@ router.get('/', (req, res) => {
 
 router.post('/', authRequired, (req, res) => {
   if (!req.files || Object.keys(req.files).length === 0) {
-    console.log(req);
     return res.status(400).send('No files were uploaded.');
   }
 
@@ -65,7 +64,6 @@ router.post('/', authRequired, (req, res) => {
           .then((scrape) => {
             const result = scrape.data.body;
             // Any newCase value that doesn't reference the result should be considered a work in progress of the scraper and will need to be updated as the scraper grows
-            console.log(result);
             const newCase = {
               case_id: UUID,
               case_url: s3return.Location,
