@@ -66,7 +66,7 @@ router.post('/', authRequired, (req, res) => {
           user_id: req.profile.id,
           status: 'processing',
         };
-        console.log(req.profile)
+        console.log(req.profile);
         Upload.add(caseRecord);
         axios
           .post(`${process.env.DS_API_URL}${UUID}`, { name: UUID })
@@ -93,6 +93,8 @@ router.post('/', authRequired, (req, res) => {
               filed_in_one_year: false,
               credible: false,
             };
+
+            Upload.update(newCase);
             return res.status(200).json(newCase);
           });
       })
