@@ -9,6 +9,7 @@ const router = express.Router();
 const Upload = require('./uploadModel');
 require('dotenv').config();
 const authRequired = require('../middleware/authRequired');
+const { date } = require('faker');
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -71,12 +72,13 @@ router.post('/', authRequired, (req, res) => {
           .post(`${process.env.DS_API_URL}${UUID}`, { name: UUID })
           .then((scrape) => {
             const result = scrape.data.body;
+            console.log(result.date)
             // Any newCase value that doesn't reference the result should be considered a work in progress of the scraper and will need to be updated as the scraper grows
             const newCase = {
               case_id: UUID,
               case_url: s3return.Location,
               case_number: '',
-              date: result.date,
+              date: new Date(result.date),
               judge: '',
               case_outcome: result.outcome,
               country_of_origin: result['country of origin'],
