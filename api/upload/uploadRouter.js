@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 const router = express.Router();
-const Upload = require('./uploadModel');
+const Case = require('../cases/caseModel');
 require('dotenv').config();
 const authRequired = require('../middleware/authRequired');
 
@@ -66,7 +66,7 @@ router.post('/', authRequired, (req, res) => {
           user_id: req.profile.id,
           status: 'processing',
         };
-        Upload.add(caseRecord);
+        Case.add(caseRecord);
         axios
           .post(`${process.env.DS_API_URL}${UUID}`, { name: UUID })
           .then((scrape) => {
@@ -93,7 +93,7 @@ router.post('/', authRequired, (req, res) => {
               credible: false,
             };
 
-            Upload.update(newCase);
+            Case.update(newCase, 'review');
             return res.status(200).json(newCase);
           });
       })

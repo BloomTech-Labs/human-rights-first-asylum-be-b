@@ -51,8 +51,10 @@ const writeCSV = async (case_number) => {
   }
 };
 
-const update = async (case_number, changes) => {
-  return await db('cases').where({ case_number }).update(changes);
+const update = async (data, status) => {
+  return await db('cases')
+    .where({ case_id: data.case_id })
+    .update({ ...data, status: status });
 };
 
 module.exports = {
