@@ -1,7 +1,6 @@
 const db = require('../../data/db-config');
 
 const add = async (data) => {
-  console.log('add function works');
   return await db('cases').insert(data);
 };
 
