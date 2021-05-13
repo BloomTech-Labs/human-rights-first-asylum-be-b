@@ -265,4 +265,15 @@ router.put('/:id', (req, res) => {
     });
 });
 
+router.get('/unapproved-cases', (req, res) => {
+  Cases.findByStatus('approved')
+    .then((cases) => {
+      res.status(200).json(cases);
+    })
+    .catch((err) => {
+      res.status(500).json(err.message);
+    });
+  console.log('test route');
+});
+
 module.exports = router;
