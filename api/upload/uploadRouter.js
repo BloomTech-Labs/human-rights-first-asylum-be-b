@@ -76,7 +76,7 @@ router.post('/', authRequired, (req, res) => {
               case_id: UUID,
               case_url: s3return.Location,
               case_number: '',
-              date: result.date,
+              date: new Date(result.date),
               judge: '',
               case_outcome: result.outcome,
               country_of_origin: result['country of origin'],

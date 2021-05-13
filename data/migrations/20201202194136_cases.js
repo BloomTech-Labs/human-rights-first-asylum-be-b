@@ -10,7 +10,7 @@ exports.up = function (knex) {
         .onDelete('RESTRICT');
       table.string('case_url');
       table.string('case_number');
-      table.string('date');
+      table.date('date');
       table.string('judge');
       table.string('case_outcome');
       table.string('country_of_origin');
