@@ -192,6 +192,16 @@ router.get('/', Cache.checkCache, (req, res) => {
  *        description: 'case not found'
  */
 
+router.get('/unapproved-cases', (req, res) => {
+  Cases.findByStatus('review')
+    .then((cases) => {
+      res.status(200).json(cases);
+    })
+    .catch((err) => {
+      res.status(500).json(err.message);
+    });
+});
+
 router.get('/:id', (req, res) => {
   const id = String(req.params.id);
   const key = String(req.originalUrl);
@@ -263,17 +273,6 @@ router.put('/:id', (req, res) => {
     .catch((err) => {
       res.status(500).json(err.message);
     });
-});
-
-router.get('/unapproved-cases', (req, res) => {
-  Cases.findByStatus('approved')
-    .then((cases) => {
-      res.status(200).json(cases);
-    })
-    .catch((err) => {
-      res.status(500).json(err.message);
-    });
-  console.log('test route');
 });
 
 module.exports = router;

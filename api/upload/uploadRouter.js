@@ -9,7 +9,6 @@ const router = express.Router();
 const Case = require('../cases/caseModel');
 require('dotenv').config();
 const authRequired = require('../middleware/authRequired');
-const { date } = require('faker');
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
