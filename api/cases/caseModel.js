@@ -31,7 +31,7 @@ const findBy = async (filter) => {
 
 const findByStatus = async (filter) => {
   const a = await db('cases')
-    .select('user_id', 'status')
+    .select('user_id', 'created_at', 'case_url', 'status')
     .whereIn('status', filter);
   return a;
 };
