@@ -26,7 +26,7 @@ exports.up = function (knex) {
       table.boolean('filed_in_one_year');
       table.boolean('credible');
       table.string('status');
-      table.string('uploaded');
+      table.timestamps(false, true);
     });
 };
 
