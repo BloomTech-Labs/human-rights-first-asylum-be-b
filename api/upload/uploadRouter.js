@@ -91,9 +91,10 @@ router.post('/', authRequired, (req, res) => {
               appellate: false,
               filed_in_one_year: false,
               credible: false,
+              status: 'review',
             };
 
-            Case.update(newCase, 'review');
+            Case.update(newCase);
             return res.status(200).json(newCase);
           });
       })
