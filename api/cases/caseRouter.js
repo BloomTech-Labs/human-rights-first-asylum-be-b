@@ -193,7 +193,7 @@ router.get('/', Cache.checkCache, (req, res) => {
  */
 
 router.get('/unapproved-cases', (req, res) => {
-  Cases.findByStatus('review')
+  Cases.findByStatus(['review', 'processing', 'approved'])
     .then((cases) => {
       res.status(200).json(cases);
     })
