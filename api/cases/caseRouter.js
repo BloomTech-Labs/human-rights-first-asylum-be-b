@@ -282,7 +282,7 @@ router.get('/:id/download-csv', Cache.csvCache, (req, res) => {
 //     });
 // });
 router.put('/:id', (req, res) => {
-  Cases.update(req.body)
+  Cases.update({ ...req.body, case_id: req.params.id })
     .then((updatedCase) => {
       res.status(200).json(updatedCase);
     })
