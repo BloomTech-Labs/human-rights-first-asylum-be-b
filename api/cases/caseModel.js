@@ -32,7 +32,7 @@ const findBy = async (filter) => {
 const findByStatus = async (filter) => {
   const a = await db('cases')
     .select('user_id', 'status')
-    .where('status', filter);
+    .whereIn('status', filter);
   return a;
 };
 
