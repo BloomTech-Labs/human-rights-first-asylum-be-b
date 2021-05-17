@@ -205,6 +205,7 @@ router.get('/user-cases', (req, res) => {
     });
 });
 
+// Will add middleware to authorize admins+ to this endpoint
 router.get('/pending-cases', (req, res) => {
   Cases.findByStatusAll({
     status: 'pending',
