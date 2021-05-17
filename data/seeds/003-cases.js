@@ -26,7 +26,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: true,
           status: 'approved',
-          uploaded: '1',
         },
         {
           // Done
@@ -51,7 +50,6 @@ exports.seed = function (knex) {
           filed_in_one_year: true,
           credible: false,
           status: 'approved',
-          uploaded: '2',
         },
         {
           // Done
@@ -76,7 +74,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: true,
           status: 'approved',
-          uploaded: '3',
         },
         {
           // Done
@@ -101,7 +98,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '4',
         },
         {
           // Done
@@ -126,7 +122,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '5',
         },
         {
           // Done
@@ -151,7 +146,6 @@ exports.seed = function (knex) {
           filed_in_one_year: true,
           credible: false,
           status: 'approved',
-          uploaded: '6',
         },
         {
           // Done
@@ -176,7 +170,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: true,
           status: 'approved',
-          uploaded: '7',
         },
         {
           // Done
@@ -201,7 +194,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '8',
         },
         {
           // Done
@@ -226,7 +218,6 @@ exports.seed = function (knex) {
           filed_in_one_year: true,
           credible: false,
           status: 'approved',
-          uploaded: '9',
         },
         {
           // Done
@@ -251,7 +242,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '10',
         },
         {
           // Done
@@ -276,7 +266,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '11',
         },
         {
           // Done
@@ -301,7 +290,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '12',
         },
         {
           // Done
@@ -326,7 +314,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: false,
           status: 'approved',
-          uploaded: '13',
         },
         {
           // Done
@@ -351,7 +338,6 @@ exports.seed = function (knex) {
           filed_in_one_year: false,
           credible: true,
           status: 'approved',
-          uploaded: '14',
         },
         {
           case_id: 'be060eeb-f1f3-48c0-b6db-3f8fed6135b9',
@@ -375,7 +361,6 @@ exports.seed = function (knex) {
           filed_in_one_year: true,
           credible: false,
           status: 'pending', // For testing of the case approval page
-          uploaded: '15',
         },
       ]);
     });
