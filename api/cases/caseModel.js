@@ -29,10 +29,18 @@ const findBy = async (filter) => {
     .select('c.*', 'j.name as judge_name');
 };
 
-const findByStatus = async (filter) => {
+const findByStatusUser = async (filter) => {
   const a = await db('cases')
-    .select('user_id', 'status')
-    .whereIn('status', filter);
+    .select('user_id', 'created_at', 'case_url', 'status')
+    .whereIn('status', filter.status)
+    .where('user_id', filter.user_id);
+  return a;
+};
+
+const findByStatusAll = async (filter) => {
+  const a = await db('cases')
+    .select('user_id', 'created_at', 'case_url', 'status')
+    .where(filter);
   return a;
 };
 
@@ -69,7 +77,8 @@ module.exports = {
   findAll,
   findById,
   findBy,
-  findByStatus,
+  findByStatusUser,
+  findByStatusAll,
   writeCSV,
   update,
 };

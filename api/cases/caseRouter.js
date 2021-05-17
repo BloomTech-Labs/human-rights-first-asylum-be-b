@@ -192,8 +192,23 @@ router.get('/', Cache.checkCache, (req, res) => {
  *        description: 'case not found'
  */
 
-router.get('/unapproved-cases', (req, res) => {
-  Cases.findByStatus(['review', 'processing', 'approved'])
+router.get('/user-cases', (req, res) => {
+  Cases.findByStatusUser({
+    status: ['approved', 'review', 'rejected', 'pending', 'processing'],
+    user_id: req.profile.id,
+  })
+    .then((cases) => {
+      res.status(200).json(cases);
+    })
+    .catch((err) => {
+      res.status(500).json(err.message);
+    });
+});
+
+router.get('/pending-cases', (req, res) => {
+  Cases.findByStatusAll({
+    status: 'pending',
+  })
     .then((cases) => {
       res.status(200).json(cases);
     })
