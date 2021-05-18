@@ -1,11 +1,11 @@
 const express = require('express');
 const Judges = require('./judgeModel');
-const verify = require('../middleware/verifyDataID');
+// const verify = require('../middleware/verifyDataID');
 const Cache = require('../middleware/cache');
 const fs = require('fs');
 const JSZip = require('jszip');
 const cacache = require('cacache');
-const authRequired = require('../middleware/authRequired');
+// const authRequired = require('../middleware/authRequired');
 
 // TODO add auth to router - final phase
 
@@ -14,7 +14,7 @@ const router = express.Router();
 
 //middleware
 
-router.use('/:name', authRequired, verify.verifyJudge);
+// router.use('/:judge_id', authRequired);
 
 //routes
 router.get('/', Cache.checkCache, (req, res) => {
@@ -25,6 +25,19 @@ router.get('/', Cache.checkCache, (req, res) => {
     })
     .catch((err) => res.status(500).json({ message: err.message }));
 });
+
+// ************************************************
+// To be built with frontend-backend-DS-backend-frontend data flow
+// router.get('/:judge_id/cases', authRequired, (req, res) => {
+//   res.status(200).json({ message: 'To be built' });
+// });
+// ************************************************
+
+router.get('/:judge_id/cases', async (req, res) => {
+  const data = await Judges.findJudgeCases(req.params.judge_id);
+  res.status(200).json({ message: 'Success', data });
+});
+
 /**
  * @swagger
  * components:
