@@ -1,8 +1,8 @@
 exports.up = function (knex) {
   return knex.schema
     .raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
-    .createTable('book_mark_judges', function (table) {
-      table.increments('book_mark_judges_id');
+    .createTable('bookmark_judges', function (table) {
+      table.increments('bookmark_judges_id');
       table
         .string('user_id')
         .references('user_id')
@@ -19,5 +19,5 @@ exports.up = function (knex) {
 };
 
 exports.down = (knex) => {
-  return knex.schema.dropTableIfExists('book_mark_judges');
+  return knex.schema.dropTableIfExists('bookmark_judges');
 };

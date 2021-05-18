@@ -1,7 +1,8 @@
 exports.up = function (knex) {
   return knex.schema
     .raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
-    .createTable('protected_join', function (table) {
+    .createTable('protected_grounds_cases', function (table) {
+      table.increments('protected_ground_case_id');
       table
         .string('protected_ground')
         .references('ground_tag')
@@ -18,5 +19,5 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists('protected_join');
+  return knex.schema.dropTableIfExists('protected_grounds_cases');
 };
