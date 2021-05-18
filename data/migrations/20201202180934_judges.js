@@ -10,7 +10,7 @@ exports.up = function (knex) {
       table.date('date_appointed');
       table.date('birthdate');
       table.string('biography');
-      table.string('appointed_by');
+      table.string('appointed_by'); // TBD may be another table with appointers
     });
 };
 
