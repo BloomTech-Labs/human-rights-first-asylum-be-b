@@ -12,7 +12,7 @@ exports.up = function (knex) {
       table.string('case_number');
       table.date('case_date');
       table
-        .string('judge_id')
+        .integer('judge_id')
         .references('judge_id')
         .inTable('judges')
         .onDelete('RESTRICT');
