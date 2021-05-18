@@ -18,7 +18,7 @@ exports.up = function (knex) {
         .onDelete('RESTRICT');
       table.string('case_outcome'); // TBD may be another table with outcome codes
       table.string('country_of_origin'); // TBD may be another table with countries
-      table.string('protected_grounds'); // TBD may be another table with ground codes
+      table.string('protected_grounds');
       table.string('application_type'); // TBD may be another table with app types
       table.string('case_origin_city'); // TBD may be another table with cities
       table.string('case_origin_state'); // TBD may be another table with states
