@@ -5,8 +5,8 @@ exports.up = function (knex) {
       table.increments('protected_ground_case_id');
       table
         .string('protected_ground')
-        .references('ground_tag')
-        .inTable('protected_tags')
+        .references('protected_grounds')
+        .inTable('protected_grounds')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
       table

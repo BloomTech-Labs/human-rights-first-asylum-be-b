@@ -2,7 +2,7 @@
 
 const faker = require('faker');
 const protected_grounds = [...new Array(5)].map(() => ({
-  ground_tag: `${faker.random.word()}`,
+  protected_grounds: `${faker.random.word()}`,
 }));
 exports.seed = function (knex) {
   // Deletes ALL existing entries
